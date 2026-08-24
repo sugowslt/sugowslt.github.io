@@ -6,6 +6,7 @@ module.exports = {
   siteUrl: "https://sugowslt.github.io/",
   links: {
     github: "https://github.com/sugowslt",
+    linkedin: "https://www.linkedin.com/in/sugowslt/",
     email: "mailto:sugowslt@gmail.com",
   },
   utterances: {

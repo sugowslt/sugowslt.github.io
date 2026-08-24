@@ -1,5 +1,6 @@
 import React from "react";
 
+import { FaGithub, FaLinkedin } from "react-icons/fa";
 import styled from "styled-components";
 import { links, name } from "../../../../resume-config";
 
@@ -47,15 +48,30 @@ const Description = styled.div`
 
 const Links = styled.div`
   display: flex;
-  flex-wrap: wrap;
-  gap: 6px 16px;
-  margin-top: 14px;
+  align-items: center;
+  gap: 12px;
+  margin-top: 8px;
 
   & > a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     color: ${(props) => props.theme.colors.link};
-    font-size: 14px;
+    font-size: 22px;
     text-decoration: none;
   }
+
+  & > a:hover {
+    opacity: 0.72;
+  }
+`;
+
+const Email = styled.a`
+  display: inline-block;
+  margin-top: 14px;
+  color: ${(props) => props.theme.colors.link};
+  font-size: 14px;
+  text-decoration: none;
 `;
 
 export const About = () => {
@@ -72,10 +88,25 @@ export const About = () => {
           기능 구현에 그치지 않고 데이터 정합성과 실패 상황을 고려하며, 선택한
           설계를 재현 가능한 테스트로 확인합니다.
         </Description>
-        <Links>
-          <a href={links.email}>sugowslt@gmail.com</a>
-          <a href={links.github} target="_blank" rel="noreferrer">
-            github.com/sugowslt
+        <Email href={links.email}>sugowslt@gmail.com</Email>
+        <Links aria-label="외부 프로필">
+          <a
+            href={links.github}
+            target="_blank"
+            rel="noreferrer"
+            aria-label="GitHub 프로필"
+            title="GitHub"
+          >
+            <FaGithub aria-hidden="true" />
+          </a>
+          <a
+            href={links.linkedin}
+            target="_blank"
+            rel="noreferrer"
+            aria-label="LinkedIn 프로필"
+            title="LinkedIn"
+          >
+            <FaLinkedin aria-hidden="true" />
           </a>
         </Links>
       </div>
