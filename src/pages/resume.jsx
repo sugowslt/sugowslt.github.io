@@ -40,20 +40,30 @@ const Resume = () => {
       <SectionWrapper>
         <Title>프로젝트</Title>
         <Introductions
-          title="Kotlin Payment Core API"
-          subTitle="개인 프로젝트 | Backend"
-          homepage={{
-            text: "GitHub Profile",
-            link: "https://github.com/sugowslt",
-          }}
+          title="Kotlin Backend Systems"
+          subTitle="개인 프로젝트 | Backend | 2026"
+          homepages={[
+            {
+              text: "Payment API",
+              link: "https://github.com/sugowslt/kotlin-payment-core-api",
+            },
+            {
+              text: "Async Settlement",
+              link: "https://github.com/sugowslt/kotlin-order-settlement-async",
+            },
+            {
+              text: "Observability Lab",
+              link: "https://github.com/sugowslt/kotlin-backend-observability-lab",
+            },
+          ]}
           description={`
-            결제 승인부터 취소, 정산까지의 흐름에서 데이터 정합성과 장애 대응을 다룬 백엔드 프로젝트입니다.
+            결제 상태 전이부터 비동기 정산, 운영 관측까지 백엔드의 핵심 실패 경계를 세 저장소로 나누어 구현했습니다.
           `}
           infos={`
-            • Kotlin, Spring Boot 기반 결제 승인·취소·정산 API와 상태 전이 구현
-            • Idempotency-Key와 비관적 락으로 중복 요청 및 동시성 충돌 제어
-            • 외부 결제사 오류 유형별 재시도 정책과 Outbox 기반 이벤트 복구 흐름 구성
-            • H2 75개, MySQL·Redis 74개 테스트로 핵심 결제 흐름 검증
+            • 결제: Idempotency-Key와 DB 행 잠금으로 승인·취소 중복 및 동시성 충돌 제어
+            • 정산: Kafka 멱등 Producer, DB 유니크 제약, 재시도·DLT로 중복과 실패 격리
+            • 관측: Prometheus·Grafana 지표, p95 경보, 드릴 트래픽 분리와 알림 복구 검증
+            • 검증: 세 저장소의 로컬 테스트 총 95개 통과, Docker 통합 실행 절차 문서화
           `}
         />
       </SectionWrapper>
