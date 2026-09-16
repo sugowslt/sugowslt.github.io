@@ -81,11 +81,14 @@ export const About = () => {
       <div>
         <Name>{name}</Name>
         <Description>
-          Kotlin과 Java, Spring Boot로 서버를 만드는 신입 백엔드 개발자입니다.
-        </Description>
-        <Description>
-          결제와 Webhook 프로젝트에서 요청이 겹치거나 처리가 중간에 멈추는
-          상황을 다뤘고, 복구 후 결과까지 테스트로 확인했습니다.
+          안녕하세요, 저는 주니어 백엔드 개발자입니다.
+          <br />
+          Kotlin·Java와 Spring Boot를 중심으로 확장성과 유연성이 높은 백엔드
+          시스템을 구현하고자 합니다.
+          <br />
+          "지속적인 개선이 지연된 완벽보다 낫다." 라는 말처럼,
+          <br />
+          매일매일 꾸준히 성장하기 위해 노력합니다.
         </Description>
         <Email href={links.email}>sugowslt@gmail.com</Email>
         <Links aria-label="외부 프로필">
