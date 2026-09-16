@@ -40,6 +40,29 @@ const Resume = () => {
       <SectionWrapper>
         <Title>프로젝트</Title>
         <Introductions
+          title="HookRelay"
+          subTitle="개인 프로젝트 | Kotlin·Spring Boot | 2026"
+          homepages={[
+            {
+              text: "GitHub",
+              link: "https://github.com/sugowslt/Kotlin_Webhook_Platform",
+            },
+            {
+              text: "CI",
+              link: "https://github.com/sugowslt/Kotlin_Webhook_Platform/actions/workflows/ci.yml",
+            },
+          ]}
+          description={`
+            Webhook 전달에서 발생하는 중복 처리, 일시적인 실패, Worker 중단을 복구할 수 있도록 비동기 전달 플랫폼을 구현했습니다.
+          `}
+          infos={`
+            • FOR UPDATE SKIP LOCKED와 lease token으로 여러 Worker의 작업 선점과 장애 후 재처리 제어
+            • HMAC-SHA256 서명, Idempotency-Key, URL 검증으로 전달 무결성·중복·SSRF 위험 대응
+            • Retry-After와 지수 backoff, DEAD_LETTER, 수동 재전송, cursor 조회 API로 실패한 전달 추적 및 복구
+            • PostgreSQL Testcontainers와 WireMock을 포함한 전체 테스트 64개 및 GitHub Actions CI 통과
+          `}
+        />
+        <Introductions
           title="Kotlin Backend Systems"
           subTitle="개인 프로젝트 | Backend | 2026"
           homepages={[
