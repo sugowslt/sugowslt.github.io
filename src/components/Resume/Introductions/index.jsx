@@ -9,6 +9,9 @@ const Wrapper = styled.div`
 
 const TitleWrapper = styled.div`
   display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
 `;
 
 const Title = styled.h1`
@@ -19,8 +22,7 @@ const Title = styled.h1`
 `;
 
 const SubTitle = styled.h1`
-  margin-left: auto;
-  margin-top: auto;
+  margin: 0;
   font-size: 16px;
   font-weight: 500;
   color: ${(props) => props.theme.colors.secondaryText};
@@ -31,7 +33,7 @@ const ExtraWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 4px 16px;
-  margin-top: 4px;
+  margin-top: 8px;
   margin-bottom: 16px;
 `;
 
@@ -48,7 +50,8 @@ const Description = styled.p`
   line-height: 1.6;
   font-size: 16px;
   color: ${(props) => props.theme.colors.tertiaryText};
-  word-break: break-all;
+  word-break: keep-all;
+  overflow-wrap: break-word;
 `;
 
 /**
