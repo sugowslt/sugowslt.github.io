@@ -18,7 +18,8 @@ const Title = styled.h1`
   font-size: 22.6px;
   font-weight: 600;
   color: ${(props) => props.theme.colors.subText};
-  word-break: break-all;
+  word-break: keep-all;
+  overflow-wrap: break-word;
 `;
 
 const SubTitle = styled.h1`
@@ -26,7 +27,8 @@ const SubTitle = styled.h1`
   font-size: 16px;
   font-weight: 500;
   color: ${(props) => props.theme.colors.secondaryText};
-  word-break: break-all;
+  word-break: keep-all;
+  overflow-wrap: break-word;
 `;
 
 const ExtraWrapper = styled.div`
