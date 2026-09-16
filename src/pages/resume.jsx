@@ -97,7 +97,7 @@ const Resume = () => {
         <Introductions
           title="원광대학교 컴퓨터·소프트웨어공학과"
           subTitle="2027.02 졸업 예정"
-          description="2026년 2학기 취업계를 활용할 수 있으며, 2026.09.02부터 풀타임 근무가 가능합니다."
+          description=""
         />
         <Introductions
           title="교내 AI 활용 경진대회"
