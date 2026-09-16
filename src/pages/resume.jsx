@@ -97,7 +97,6 @@ const Resume = () => {
         <Introductions
           title="원광대학교 컴퓨터·소프트웨어공학과"
           subTitle="2027.02 졸업 예정"
-          description=""
         />
         <Introductions
           title="교내 AI 활용 경진대회"
