@@ -17,6 +17,7 @@ const Wrapper = styled.div`
 
 const Profile = styled.img`
   flex: 0 0 auto;
+  margin-top: 8px;
   margin-right: 16px;
   width: 128px;
   height: 128px;
