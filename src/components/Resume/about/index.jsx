@@ -33,7 +33,7 @@ const Profile = styled.img`
 `;
 
 const Content = styled.div`
-  margin-top: 32px;
+  margin-top: 16px;
 
   @media (max-width: 600px) {
     margin-top: 0;
