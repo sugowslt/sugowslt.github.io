@@ -93,7 +93,7 @@ const Resume = () => {
 
       <Divider />
       <SectionWrapper>
-        <Title>학력 및 기타</Title>
+        <Title>학력 및 수상내역</Title>
         <Introductions
           title="원광대학교 컴퓨터·소프트웨어공학과"
           subTitle="2027.02 졸업 예정"
@@ -102,7 +102,6 @@ const Resume = () => {
           title="교내 AI 활용 경진대회"
           subTitle="원광대학교 | 금상"
         />
-        <Introductions title="병역" subTitle="병역필" />
       </SectionWrapper>
     </Layout>
   );
