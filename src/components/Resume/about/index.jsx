@@ -7,7 +7,7 @@ import { links, name } from "../../../../resume-config";
 const Wrapper = styled.div`
   margin-bottom: 60px;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
 
   @media (max-width: 600px) {
     align-items: flex-start;
@@ -29,6 +29,14 @@ const Profile = styled.img`
     margin: 0 0 20px;
     width: 96px;
     height: 96px;
+  }
+`;
+
+const Content = styled.div`
+  margin-top: 32px;
+
+  @media (max-width: 600px) {
+    margin-top: 0;
   }
 `;
 
@@ -78,7 +86,7 @@ export const About = () => {
   return (
     <Wrapper>
       <Profile src="/profile.png" alt="신재현 프로필 사진" />
-      <div>
+      <Content>
         <Name>{name}</Name>
         <Description>
           안녕하세요, 저는 주니어 백엔드 개발자입니다.
@@ -111,7 +119,7 @@ export const About = () => {
             <FaLinkedin aria-hidden="true" />
           </a>
         </Links>
-      </div>
+      </Content>
     </Wrapper>
   );
 };
