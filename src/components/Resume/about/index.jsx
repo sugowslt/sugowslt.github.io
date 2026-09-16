@@ -81,12 +81,11 @@ export const About = () => {
       <div>
         <Name>{name}</Name>
         <Description>
-          Kotlin·Java와 Spring Boot를 중심으로 백엔드 시스템을 구현하고 검증하는
-          신입 개발자입니다.
+          Kotlin과 Java, Spring Boot로 서버를 만드는 신입 백엔드 개발자입니다.
         </Description>
         <Description>
-          데이터 정합성과 실패 상황을 설계에 반영하고, 동시성·복구 흐름을 재현
-          가능한 테스트로 확인합니다.
+          결제와 Webhook 프로젝트에서 요청이 겹치거나 처리가 중간에 멈추는
+          상황을 다뤘고, 복구 후 결과까지 테스트로 확인했습니다.
         </Description>
         <Email href={links.email}>sugowslt@gmail.com</Email>
         <Links aria-label="외부 프로필">
