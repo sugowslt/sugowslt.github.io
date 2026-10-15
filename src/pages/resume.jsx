@@ -63,7 +63,7 @@ const Resume = () => {
           mobileTop={60}
           descriptionWidth={646}
           detailsWidth={583}
-          subTitle="오픈소스 기여 | Kotlin·JVM | 병합 완료"
+          subTitle="오픈소스 기여 | Kotlin·JVM | 병합 예정"
           homepages={[
             {
               text: "PR #3265",
@@ -94,7 +94,7 @@ const Resume = () => {
           title="Fraud Lab"
           descriptionWidth={942}
           detailsWidth={627}
-          subTitle="개인 프로젝트 | Kotlin·Spring Boot·Python | 2026"
+          subTitle="개인 프로젝트 | Kotlin·Spring Boot·Python | 진행중"
           homepages={[
             {
               text: "GitHub",
