@@ -1,38 +1,41 @@
 import React from "react";
 import styled from "styled-components";
 
-import Layout from "components/Layout";
+import Layout from "components/Resume/Layout";
 import SEO from "components/SEO";
-import Divider from "components/Divider";
-import VerticalSpace from "components/VerticalSpace";
 import { Introductions } from "components/Resume/Introductions";
 import { About } from "components/Resume/about";
 
 import { siteUrl } from "../../blog-config";
 
-const SectionWrapper = styled.div`
-  margin-top: 20px;
+const SectionWrapper = styled.section`
+  width: 100%;
+`;
 
-  @media (max-width: 768px) {
-    padding: 0 15px;
+const Title = styled.h2`
+  padding: 120px 20px 8px;
+  text-align: center;
+  font-family: "Space Mono", monospace;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.5;
+  text-transform: uppercase;
+  color: #5249f4;
+
+  @media (max-width: 767px) {
+    font-size: 13px;
   }
 `;
 
-const Title = styled.h1`
-  font-size: 33.6px;
-  font-weight: 300;
-  color: ${(props) => props.theme.colors.text};
-  word-break: keep-all;
-`;
-
 const DraftNotice = styled.aside`
-  margin: 24px 0;
-  padding: 16px;
-  border: 1px solid ${(props) => props.theme.colors.divider};
-  border-radius: 8px;
-  font-size: 14px;
-  line-height: 1.6;
-  color: ${(props) => props.theme.colors.secondaryText};
+  max-width: 667px;
+  margin: 32px auto -32px;
+  padding: 0 20px;
+  font-size: 12px;
+  line-height: 1.5;
+  color: rgba(0, 0, 0, 0.6);
+  word-break: keep-all;
+  overflow-wrap: anywhere;
 `;
 
 const Resume = () => {
@@ -43,7 +46,6 @@ const Resume = () => {
         description="Kotlin·Java와 Spring Boot를 중심으로 확장성과 유연성이 높은 백엔드 시스템을 구현하고자 하는 주니어 개발자 신재현의 이력서"
         url={`${siteUrl}resume/`}
       />
-      <VerticalSpace size={48} />
       <About />
 
       <DraftNotice aria-label="완료 가정 검토본 안내">
@@ -52,11 +54,15 @@ const Resume = () => {
         확인하기 전에는 제출용 이력서로 사용하지 않습니다.
       </DraftNotice>
 
-      <Divider />
-      <SectionWrapper>
-        <Title>오픈소스 기여</Title>
+      <SectionWrapper aria-labelledby="open-source-title">
+        <Title id="open-source-title" aria-label="오픈소스 기여">
+          Open source contribute
+        </Title>
         <Introductions
           title="kotlinx.serialization"
+          mobileTop={60}
+          descriptionWidth={646}
+          detailsWidth={583}
           subTitle="개인 기여 | Kotlin·JVM | 병합 완료 가정"
           homepages={[
             {
@@ -79,11 +85,37 @@ const Resume = () => {
         />
       </SectionWrapper>
 
-      <Divider />
-      <SectionWrapper>
-        <Title>프로젝트</Title>
+      <SectionWrapper aria-labelledby="project-one-title">
+        <Title id="project-one-title">Project 01</Title>
+        <Introductions
+          title="Fraud Lab"
+          descriptionWidth={942}
+          detailsWidth={627}
+          subTitle="개인 프로젝트 | Kotlin·Spring Boot·Python | 완료 가정"
+          homepages={[
+            {
+              text: "GitHub",
+              link: "https://github.com/sugowslt/transaction-anomaly-detection",
+            },
+          ]}
+          description={`
+            AI Hub의 합성 카드·이체 데이터로 이상거래 후보를 판별하고, 학습한 모델을 Kotlin API·Python 추론·저장·대시보드 조회로 연결했습니다. 실제 금융 사기 탐지 성능을 검증한 결과는 아닙니다.
+          `}
+          infos={`
+            • 입력: 거래 시점 이전의 이력만 계산하고, 시간 분할·결측·미등록 코드를 처리해 미래 정보와 정답이 입력에 섞이지 않도록 했습니다.
+            • 모델: 신경망 TabM과 CatBoost를 같은 시간 분할에서 비교하고, 경보 정밀도·재현율과 유형별 미탐을 기준으로 후보를 평가했습니다.
+            • 연동: 모델·전처리·특징 순서·경보 기준을 함께 버전 관리하고, 입력 검증부터 판별 결과 저장·재조회까지 일치하는지 확인했습니다.
+            • 검증: 학습·서버 입력 대조와 재시도·오류 처리를 확인하고, CPU 추론 지연·메모리를 측정했습니다. 최종 모델과 성능 수치는 실제 검증 결과를 확정한 뒤 기재합니다.
+          `}
+        />
+      </SectionWrapper>
+
+      <SectionWrapper aria-labelledby="project-two-title">
+        <Title id="project-two-title">Project 02</Title>
         <Introductions
           title="HookRelay"
+          descriptionWidth={418}
+          detailsWidth={587}
           subTitle="개인 프로젝트 | Kotlin·Spring Boot | 2026"
           homepages={[
             {
@@ -105,8 +137,14 @@ const Resume = () => {
             • 검증: PostgreSQL Testcontainers와 WireMock을 포함한 테스트 64개 및 GitHub Actions CI 통과. 두 Worker의 중복 선점 방지와 실제 HTTP 서명·재시도를 검증했습니다.
           `}
         />
+      </SectionWrapper>
+
+      <SectionWrapper aria-labelledby="project-three-title">
+        <Title id="project-three-title">Project 03</Title>
         <Introductions
           title="Kotlin Backend Systems"
+          mobileTop={60}
+          detailsWidth={484}
           subTitle="개인 프로젝트 시리즈 | Kotlin·Spring Boot | 2026"
           homepages={[
             {
@@ -132,36 +170,21 @@ const Resume = () => {
             • 검증: 세 저장소의 로컬 테스트 95개 통과 및 Docker Compose 통합 실행 절차 문서화
           `}
         />
-        <Introductions
-          title="Fraud Lab"
-          subTitle="개인 프로젝트 | Kotlin·Spring Boot·Python | 완료 가정"
-          homepages={[
-            {
-              text: "GitHub",
-              link: "https://github.com/sugowslt/transaction-anomaly-detection",
-            },
-          ]}
-          description={`
-            AI Hub의 합성 카드·이체 데이터로 이상거래 후보를 판별하고, 학습한 모델을 Kotlin API·Python 추론·저장·대시보드 조회로 연결했습니다. 실제 금융 사기 탐지 성능을 검증한 결과는 아닙니다.
-          `}
-          infos={`
-            • 입력: 거래 시점 이전의 이력만 계산하고, 시간 분할·결측·미등록 코드를 처리해 미래 정보와 정답이 입력에 섞이지 않도록 했습니다.
-            • 모델: 신경망 TabM과 CatBoost를 같은 시간 분할에서 비교하고, 경보 정밀도·재현율과 유형별 미탐을 기준으로 후보를 평가했습니다.
-            • 연동: 모델·전처리·특징 순서·경보 기준을 함께 버전 관리하고, 입력 검증부터 판별 결과 저장·재조회까지 일치하는지 확인했습니다.
-            • 검증: 학습·서버 입력 대조와 재시도·오류 처리를 확인하고, CPU 추론 지연·메모리를 측정했습니다. 최종 모델과 성능 수치는 실제 검증 결과를 확정한 뒤 기재합니다.
-          `}
-        />
       </SectionWrapper>
 
-      <Divider />
-      <SectionWrapper>
-        <Title>학력 및 수상내역</Title>
+      <SectionWrapper aria-labelledby="experience-title">
+        <Title id="experience-title" aria-label="학력 및 수상내역">
+          Experience
+        </Title>
         <Introductions
           title="원광대학교 컴퓨터·소프트웨어공학과"
+          compact
           subTitle="2027.02 졸업 예정"
         />
         <Introductions
           title="교내 AI 활용 경진대회"
+          compact
+          mobileTop={12}
           subTitle="원광대학교 | 금상"
         />
       </SectionWrapper>

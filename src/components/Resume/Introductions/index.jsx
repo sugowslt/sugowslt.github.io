@@ -3,57 +3,113 @@ import React from "react";
 import styled from "styled-components";
 import { Infos } from "../Infos";
 
-const Wrapper = styled.div`
-  margin-top: 60px;
+const Wrapper = styled.article`
+  width: 100%;
+`;
+
+const Header = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: ${({ $compact }) => ($compact ? "40px 20px 12px" : "40px 20px 8px")};
+  text-align: center;
+
+  @media (max-width: 767px) {
+    align-items: flex-start;
+    padding-top: ${({ $mobileTop }) => $mobileTop}px;
+    text-align: left;
+  }
 `;
 
 const TitleWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  gap: 6px;
+  align-items: center;
+  gap: 4px;
+  max-width: 100%;
+
+  @media (max-width: 767px) {
+    align-items: flex-start;
+  }
 `;
 
-const Title = styled.h1`
-  font-size: 22.6px;
-  font-weight: 600;
-  color: ${(props) => props.theme.colors.subText};
+const Title = styled.h3`
+  font-size: ${({ $compact }) => ($compact ? "28px" : "40px")};
+  font-weight: ${({ $compact }) => ($compact ? 600 : 700)};
+  line-height: 1.5;
   word-break: keep-all;
-  overflow-wrap: break-word;
+  overflow-wrap: anywhere;
+
+  @media (max-width: 767px) {
+    font-size: ${({ $compact }) => ($compact ? "16px" : "28px")};
+  }
 `;
 
-const SubTitle = styled.h1`
-  margin: 0;
-  font-size: 16px;
-  font-weight: 500;
-  color: ${(props) => props.theme.colors.secondaryText};
-  word-break: keep-all;
-  overflow-wrap: break-word;
+const SubTitle = styled.p`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 6px 8px;
+  font-size: ${({ $compact }) => ($compact ? "14px" : "12px")};
+  font-weight: 300;
+  line-height: 1.25;
+  color: rgba(0, 0, 0, 0.6);
+
+  & > span + span {
+    border-left: 1px solid rgba(0, 0, 0, 0.6);
+    padding-left: 8px;
+  }
+
+  @media (max-width: 767px) {
+    justify-content: flex-start;
+    font-size: 12px;
+  }
 `;
 
 const ExtraWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
-  gap: 4px 16px;
-  margin-top: 8px;
-  margin-bottom: 16px;
+  justify-content: center;
+  gap: 4px;
+
+  @media (max-width: 767px) {
+    justify-content: flex-start;
+  }
 `;
 
 const HomepageLinkText = styled.a`
-  font-weight: 400;
-  font-size: 18px;
-  color: ${(props) => props.theme.colors.link};
-  word-break: break-all;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 12px;
+  border-radius: 20px;
+  background: rgba(73, 122, 244, 0.15);
+  color: #497af4;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 1.25;
   text-decoration: none;
+
+  &:hover {
+    background: rgba(73, 122, 244, 0.24);
+    text-decoration: underline;
+  }
 `;
 
 const Description = styled.p`
-  margin-bottom: 36px;
-  line-height: 1.6;
+  width: ${({ $width }) => $width}px;
+  max-width: 100%;
+  line-height: 1.4;
   font-size: 16px;
-  color: ${(props) => props.theme.colors.tertiaryText};
+  font-weight: 500;
   word-break: keep-all;
-  overflow-wrap: break-word;
+  overflow-wrap: anywhere;
+
+  @media (max-width: 767px) {
+    font-size: 12px;
+  }
 `;
 
 /**
@@ -72,29 +128,45 @@ export const Introductions = ({
   homepages,
   description,
   infos,
+  compact = false,
+  mobileTop = 40,
+  descriptionWidth = 660,
+  detailsWidth = 627,
 }) => {
   const homepageLinks = homepages || (homepage ? [homepage] : []);
 
   return (
     <Wrapper>
-      <TitleWrapper>
-        <Title>{title}</Title>
-        <SubTitle>{subTitle}</SubTitle>
-      </TitleWrapper>
-      <ExtraWrapper>
-        {homepageLinks.map((item) => (
-          <HomepageLinkText
-            key={item.link}
-            href={item.link}
-            target="_blank"
-            rel="noreferrer"
-          >
-            {item.text}
-          </HomepageLinkText>
-        ))}
-      </ExtraWrapper>
-      {description && <Description>{description}</Description>}
-      {infos && <Infos text={infos} />}
+      <Header $compact={compact} $mobileTop={mobileTop}>
+        <TitleWrapper>
+          <Title $compact={compact}>{title}</Title>
+          {subTitle && (
+            <SubTitle $compact={compact}>
+              {subTitle.split("|").map((part) => (
+                <span key={part.trim()}>{part.trim()}</span>
+              ))}
+            </SubTitle>
+          )}
+        </TitleWrapper>
+        {homepageLinks.length > 0 && (
+          <ExtraWrapper>
+            {homepageLinks.map((item) => (
+              <HomepageLinkText
+                key={item.link}
+                href={item.link}
+                target="_blank"
+                rel="noreferrer"
+              >
+                {item.text}
+              </HomepageLinkText>
+            ))}
+          </ExtraWrapper>
+        )}
+        {description && (
+          <Description $width={descriptionWidth}>{description}</Description>
+        )}
+      </Header>
+      {infos && <Infos text={infos} width={detailsWidth} />}
     </Wrapper>
   );
 };

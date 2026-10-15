@@ -4,102 +4,176 @@ import { FaGithub, FaLinkedin } from "react-icons/fa";
 import styled from "styled-components";
 import { links, name } from "../../../../resume-config";
 
-const Wrapper = styled.div`
-  margin-bottom: 60px;
+const Wrapper = styled.section`
   display: flex;
-  align-items: flex-start;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding: 60px 20px 100px;
+  background: #f3f3f3;
 
-  @media (max-width: 600px) {
-    align-items: flex-start;
+  @media (max-width: 767px) {
     flex-direction: column;
+    gap: 0;
+    padding: 60px 0 40px;
+  }
+`;
+
+const MobileLabel = styled.p`
+  display: none;
+
+  @media (max-width: 767px) {
+    display: block;
+    padding: 0 20px 68px;
+    font-family: "Space Mono", monospace;
+    font-size: 13px;
+    line-height: 1.5;
+    text-transform: uppercase;
   }
 `;
 
 const Profile = styled.img`
   flex: 0 0 auto;
-  margin-top: 8px;
-  margin-right: 16px;
-  width: 128px;
-  height: 128px;
-  border: 1px solid ${(props) => props.theme.colors.divider};
-  border-radius: 999px;
+  display: block;
+  width: 220px;
+  height: 290px;
   object-fit: cover;
-  object-position: center 28%;
+  object-position: center top;
+  background: #c2c2c2;
 
-  @media (max-width: 600px) {
-    margin: 0 0 20px;
-    width: 96px;
-    height: 96px;
+  @media (max-width: 767px) {
+    width: 108px;
+    height: 142px;
+    margin-bottom: 8px;
   }
 `;
 
 const Content = styled.div`
-  margin-top: 8px;
+  width: 393px;
+  max-width: 100%;
 
-  @media (max-width: 600px) {
-    margin-top: 0;
+  @media (max-width: 767px) {
+    text-align: center;
   }
 `;
 
-const Name = styled.div`
-  margin-bottom: 8px;
-  font-size: 24px;
-  font-weight: 700;
-  color: ${(props) => props.theme.colors.text};
+const Identity = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 8px 20px;
+`;
+
+const Name = styled.h1`
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 1.25;
+
+  @media (max-width: 767px) {
+    font-size: 24px;
+  }
+`;
+
+const Role = styled.p`
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.25;
+
+  @media (max-width: 767px) {
+    font-size: 12px;
+  }
 `;
 
 const Description = styled.div`
-  margin-bottom: 11.2px;
-  line-height: 1.6;
-  font-size: 16px;
-  color: ${(props) => props.theme.colors.secondaryText};
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 8px 20px;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.5;
+  color: rgba(0, 0, 0, 0.6);
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+
+  @media (max-width: 767px) {
+    font-size: 12px;
+  }
 `;
 
 const Links = styled.div`
   display: flex;
   align-items: center;
-  gap: 12px;
-  margin-top: 8px;
+  gap: 4px;
+  padding: 8px 20px;
 
   & > a {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    color: ${(props) => props.theme.colors.link};
-    font-size: 22px;
+    width: 36px;
+    height: 36px;
+    color: #111;
+    font-size: 24px;
     text-decoration: none;
+    border-radius: 50%;
   }
 
   & > a:hover {
-    opacity: 0.72;
+    color: #497af4;
+  }
+
+  @media (max-width: 767px) {
+    justify-content: center;
   }
 `;
 
 const Email = styled.a`
-  display: inline-block;
-  margin-top: 14px;
-  color: ${(props) => props.theme.colors.link};
-  font-size: 14px;
+  display: block;
+  padding: 8px 20px;
+  color: #497af4;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.5;
   text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 767px) {
+    font-size: 14px;
+  }
 `;
 
 export const About = () => {
   return (
-    <Wrapper>
-      <Profile src="/profile.png" alt="신재현 프로필 사진" />
+    <Wrapper aria-labelledby="resume-name">
+      <MobileLabel>Introduce</MobileLabel>
+      <Profile
+        src="/profile.png"
+        alt="신재현 프로필 사진"
+        width={220}
+        height={290}
+      />
       <Content>
-        <Name>{name}</Name>
+        <Identity>
+          <Name id="resume-name">{name}</Name>
+          <Role>Junior Backend Developer</Role>
+        </Identity>
         <Description>
-          안녕하세요, 저는 주니어 백엔드 개발자입니다.
-          <br />
-          Kotlin·Java와 Spring Boot를 중심으로 확장성과 유연성이 높은 백엔드
-          시스템을 구현하고자 합니다.
-          <br />
-          "지속적인 개선이 지연된 완벽보다 낫다." 라는 말처럼,
-          <br />
-          매일매일 꾸준히 성장하기 위해 노력합니다.
+          <p>
+            안녕하세요, 저는 주니어 백엔드 개발자입니다.
+            <br />
+            Kotlin·Java와 Spring Boot를 중심으로 확장성과 유연성이 높은 백엔드
+            시스템을 구현하고자 합니다.
+          </p>
+          <p>
+            "지속적인 개선이 지연된 완벽보다 낫다." 라는 말처럼,
+            <br />
+            매일매일 꾸준히 성장하기 위해 노력합니다.
+          </p>
         </Description>
-        <Email href={links.email}>sugowslt@gmail.com</Email>
         <Links aria-label="외부 프로필">
           <a
             href={links.github}
@@ -120,6 +194,7 @@ export const About = () => {
             <FaLinkedin aria-hidden="true" />
           </a>
         </Links>
+        <Email href={links.email}>sugowslt@gmail.com</Email>
       </Content>
     </Wrapper>
   );
