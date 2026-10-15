@@ -48,6 +48,8 @@ const Resume = () => {
       <SEO
         title="신재현 | 백엔드 개발자 이력서"
         description="Kotlin·Java와 Spring Boot를 중심으로 확장성과 유연성이 높은 백엔드 시스템을 구현하고자 하는 주니어 개발자 신재현의 이력서"
+        socialTitle="신재현 | 백엔드 개발자"
+        socialDescription="Kotlin·Java·Spring Boot 프로젝트와 오픈소스 기여"
         url={`${siteUrl}resume/`}
       />
       <About />
