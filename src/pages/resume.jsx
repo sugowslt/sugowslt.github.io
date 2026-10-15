@@ -42,17 +42,6 @@ const MobileLabel = styled.span`
   }
 `;
 
-const DraftNotice = styled.aside`
-  max-width: 667px;
-  margin: 32px auto -32px;
-  padding: 0 20px;
-  font-size: 12px;
-  line-height: 1.5;
-  color: rgba(0, 0, 0, 0.6);
-  word-break: keep-all;
-  overflow-wrap: anywhere;
-`;
-
 const Resume = () => {
   return (
     <Layout>
@@ -62,12 +51,6 @@ const Resume = () => {
         url={`${siteUrl}resume/`}
       />
       <About />
-
-      <DraftNotice aria-label="완료 가정 검토본 안내">
-        완료 가정 검토본입니다. 오픈소스 PR 병합과 Fraud Lab의 최종 학습·서버
-        연동 완료를 가정한 문안을 포함합니다. 실제 완료·병합과 검증 결과를
-        확인하기 전에는 제출용 이력서로 사용하지 않습니다.
-      </DraftNotice>
 
       <SectionWrapper aria-labelledby="open-source-title">
         <Title id="open-source-title" aria-label="오픈소스 기여">
